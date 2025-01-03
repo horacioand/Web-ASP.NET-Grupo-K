@@ -29,7 +29,7 @@ namespace Negocio
             try
             {
                 Connection.Open();
-                Command.ExecuteReader();
+                SqlDataReader = Command.ExecuteReader();
             }
             catch (Exception)
             {

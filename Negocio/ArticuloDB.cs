@@ -31,7 +31,7 @@ namespace Negocio
                 c.Id = (int)db.reader["IdCategoria"];
                 c.Nombre = (string)db.reader["Categoria"];
                 a.Categoria = c;
-                a.Precio = (float)db.reader["Precio"];
+                a.Precio = (decimal)db.reader["Precio"];
                 ImagenDB i = new ImagenDB();
                 a.listImagenes = i.ListarImagenes(a.Id);
                 list.Add(a);
