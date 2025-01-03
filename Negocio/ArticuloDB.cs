@@ -33,12 +33,25 @@ namespace Negocio
                 a.Categoria = c;
                 a.Precio = (decimal)db.reader["Precio"];
                 ImagenDB i = new ImagenDB();
-                a.listImagenes = i.ListarImagenes(a.Id);
+                a.listImagenes = ListarImagenes(a.Id);
                 list.Add(a);
             }
             db.CloseConecction();
-            return list; 
-            
+            return list;           
+        }
+
+        public List<string> ListarImagenes(int id)
+        {
+            List<string> list = new List<string>();
+            DataBase db = new DataBase();
+            string consulta = "Select ImagenUrl from IMAGENES where IdArticulo = " + id;
+            db.Consulta(consulta);
+            while (db.reader.Read())
+            {
+                string url = (string)db.reader["ImagenUrl"];
+                list.Add(url);
+            }
+            return list;
         }
     }
 }
