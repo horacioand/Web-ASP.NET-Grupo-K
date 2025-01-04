@@ -32,7 +32,6 @@ namespace Negocio
                 c.Nombre = (string)db.reader["Categoria"];
                 a.Categoria = c;
                 a.Precio = (decimal)db.reader["Precio"];
-                ImagenDB i = new ImagenDB();
                 a.listImagenes = ListarImagenes(a.Id);
                 list.Add(a);
             }
