@@ -4,11 +4,11 @@
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+            <h1 id="aspnetTitle">Comercio</h1>
+            <p class="lead">Bienvenido a la web del comercio............</p>
             <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
         </section>
-
+        <!-- Dejo el default como la página de inicio del comercio, despues le podemos agregar una descripción ficticia -->
         <div class="row">
             <section class="col-md-4" aria-labelledby="gettingStartedTitle">
                 <h2 id="gettingStartedTitle">Getting started</h2>
