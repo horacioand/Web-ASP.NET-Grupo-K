@@ -33,13 +33,29 @@ namespace Negocio
                 Connection.Open();
                 SqlDataReader = Command.ExecuteReader();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
-
+        public void setParameter(string nombre, object valor)
+        {
+            Command.Parameters.AddWithValue(nombre, valor);
+        }
+        public void executeNonQuery()
+        {
+            Command.Connection = Connection;
+            try
+            {
+                Connection.Open();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public void CloseConecction()
         {
             if (SqlDataReader != null)

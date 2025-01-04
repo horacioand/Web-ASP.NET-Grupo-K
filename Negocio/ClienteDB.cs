@@ -42,5 +42,34 @@ namespace Negocio
                 db.CloseConecction();
             }
         }
+        //todavia no probe si funciona correctamente
+        public void ingresarCliente(Cliente cliente)
+        {
+            DataBase db = new DataBase();
+            try
+            {
+                db.setQuery("INSERT INTO Clientes (Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) VALUES (@id, @documento, @nombre, @apellido, @email, @direccion, @ciudad, @cp)");
+                
+                db.setParameter("@id", cliente.Id);
+                db.setParameter("@documento", cliente.Documento);
+                db.setParameter("@nombre", cliente.Nombre);
+                db.setParameter("@apellido", cliente.Apellido);
+                db.setParameter("@email", cliente.Email);
+                db.setParameter("@direccion", cliente.Direccion);
+                db.setParameter("@ciudad", cliente.Ciudad);
+                db.setParameter("@cp", cliente.Cp);
+               
+                db.executeNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.CloseConecction();
+            }
+        }
     }
 }
