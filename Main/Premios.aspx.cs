@@ -32,7 +32,6 @@ namespace Main
                 articulo3.Text = listA[2].Nombre;
                 img3.ImageUrl = listA[2].listImagenes[0];
                 descripcion3.Text = listA[2].Descripcion;
-
             }
             catch (Exception ex)
             {
@@ -40,6 +39,5 @@ namespace Main
                 throw ex;
             }
         }
-
     }
 }
