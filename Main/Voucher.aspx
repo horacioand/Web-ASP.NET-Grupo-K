@@ -4,10 +4,10 @@
     <hr />
     <div class="row">
         <div class="col-sm"></div>
-        <div class="col-sm">
-            <h6>Ingrese su Número de documento:</h6>
+        <div class="col-sm d-flex flex-column align-items-center">
+            <h6>Ingrese su DNI:</h6>
             <br />
-            <asp:TextBox ID="txtDni" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDni" CssClass="mb-2" runat="server"></asp:TextBox>
             <asp:Button ID="btnAceptarDNI" OnClick="btnAceptarDNI_Click" runat="server" Text="Aceptar" />
         </div>
         <div class="col-sm"></div>
