@@ -20,12 +20,14 @@ namespace Negocio
 
         public SqlDataReader reader { get { return SqlDataReader; } }
 
-        public void Consulta(string consulta)
+        public void setQuery(string consulta)
         {
             Command.CommandType = System.Data.CommandType.Text;
             Command.CommandText = consulta;
+        }
+        public void executeQuery()
+        {
             Command.Connection = Connection;
-
             try
             {
                 Connection.Open();

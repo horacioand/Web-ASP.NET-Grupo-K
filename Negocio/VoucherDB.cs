@@ -17,7 +17,8 @@ namespace Negocio
             try
             {
                 string consulta = "select FechaCanje from Vouchers where CodigoVoucher = '" + voucher + "'";
-                db.Consulta(consulta);
+                db.setQuery(consulta);
+                db.executeQuery();
                 //Si el codigo es valido trae una consulta por lo que entra al if
                 if (db.reader.Read())
                 {

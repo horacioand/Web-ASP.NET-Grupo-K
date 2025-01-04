@@ -15,7 +15,8 @@ namespace Negocio
             List<Articulo> list = new List<Articulo>();
             DataBase db = new DataBase();
             string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, Precio from ARTICULOS A inner join MARCAS M on A.IdMarca = M.Id inner join CATEGORIAS C on A.IdCategoria = C.Id";
-            db.Consulta(consulta);
+            db.setQuery(consulta);
+            db.executeQuery();
             while (db.reader.Read())
             {
                 Articulo a = new Articulo();
@@ -44,7 +45,8 @@ namespace Negocio
             List<string> list = new List<string>();
             DataBase db = new DataBase();
             string consulta = "Select ImagenUrl from IMAGENES where IdArticulo = " + id;
-            db.Consulta(consulta);
+            db.setQuery(consulta);
+            db.executeQuery();
             while (db.reader.Read())
             {
                 string url = (string)db.reader["ImagenUrl"];
