@@ -24,13 +24,13 @@ namespace Main
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
 
         /// <summary>
-        /// tbDocumento control.
+        /// tbPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDocumento;
+        protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
         /// btnIniciarSesion control.

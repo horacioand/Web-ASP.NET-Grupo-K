@@ -7,11 +7,11 @@
             <div class="col-4 d-flex flex-column align-items-center">
                 <div class="mb-3">
                     <label for="tbEmail" class="form-label">Email</label>
-                    <asp:TextBox ID="tbEmail" runat="server" class="form-control" aria-describedby="emailHelp"></asp:TextBox>
+                    <asp:TextBox ID="tbEmail" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-3">
-                    <label for="tbDocumento" class="form-label">Documento</label>
-                    <asp:TextBox ID="tbDocumento" runat="server" class="form-control"></asp:TextBox>
+                    <label for="tbPassword" class="form-label">Contraseña</label>
+                    <asp:TextBox ID="tbPassword" runat="server" class="form-control" type="password"></asp:TextBox>
                 </div>
                 <div class="d-flex mb-1 justify-content-center">
                     <asp:Button CssClass="btn btn-primary" ID="btnIniciarSesion" OnClick="btnIniciarSesion_Click" runat="server" Text="Ingresar" />
