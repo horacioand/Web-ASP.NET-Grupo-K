@@ -2,33 +2,27 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
-       <h3 style="justify-self:center" id="title"><%: Title %></h3>
+        <h3 style="justify-self: center" id="title"><%: Title %></h3>
         <hr />
         <div class="row">
-    <section class="col-md-4" aria-labelledby="">
-        <h4 id="articulo-1">Mochila porta notebook</h4>
-        <!-- La imagen viene desde db -->
-        <asp:Image ID="Image1" runat="server" />    
-        <p>
-            Descrippcciioonn
-        </p>
-    </section>
-    <section class="col-md-4" aria-labelledby="">
-        <h4 id="articulo-2">Mouse HeroG502</h4>
-        <!-- La imagen viene desde db -->
-        <asp:Image ID="Image2" runat="server" />
-        <p>
-            Descripcciioonn
-        </p>
-    </section>
-    <section class="col-md-4" aria-labelledby="">
-        <h4 id="articulo-3">Teclado Rk M75</h4>
-        <!-- La imagen viene desde db -->
-        <asp:Image ID="Image3" runat="server" />
-        <p>
-            Descr..
-        </p
-    </section>
-</div>
+            <div id="Premio1" class="col-md-4 articulo" aria-labelledby="">
+                <asp:Label ID="articulo1" CssClass="h4" runat="server" Text=""></asp:Label>
+                <asp:Image ID="img1" runat="server" />
+                <asp:Label ID="descripcion1" runat="server" Text=""></asp:Label>
+                <asp:Button ID="btn1" CssClass="btn btn-primary" runat="server" Text="Ver detalles" />
+            </div>
+            <div id="Premio2" class="col-md-4 articulo" aria-labelledby="">
+                <asp:Label ID="articulo2" CssClass="h4" runat="server" Text=""></asp:Label>
+                <asp:Image ID="img2" runat="server" />
+                <asp:Label ID="descripcion2" runat="server" Text=""></asp:Label>
+                <asp:Button ID="btn2" CssClass="btn btn-primary" runat="server" Text="Ver detalles" />
+            </div>
+            <div id="Premio3" class="col-md-4 articulo" aria-labelledby="">
+                <asp:Label ID="articulo3" CssClass="h4" runat="server" Text=""></asp:Label>
+                <asp:Image ID="img3" runat="server" />
+                <asp:Label ID="descripcion3" runat="server" Text=""></asp:Label>
+                <asp:Button ID="btn3" CssClass="btn btn-primary" runat="server" Text="Ver detalles" />
+            </div>
+        </div>
     </main>
 </asp:Content>
