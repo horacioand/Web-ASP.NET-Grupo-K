@@ -13,5 +13,15 @@ namespace Main
         {
 
         }
+
+        protected void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
