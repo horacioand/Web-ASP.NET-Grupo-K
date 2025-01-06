@@ -10,7 +10,7 @@
                     <asp:TextBox ID="tbEmail" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-3">
-                    <asp:Label ID="lblError" runat="server" CssClass="" Text="form-label"></asp:Label>
+                    <asp:Label ID="lblError" runat="server" CssClass="" Text=""></asp:Label>
                 </div>
                 <div class="d-flex mb-1 justify-content-center">
                     <asp:Button CssClass="btn btn-primary" ID="btnIniciarSesion" OnClick="btnIniciarSesion_Click" runat="server" Text="Ingresar" />

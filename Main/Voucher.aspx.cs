@@ -12,23 +12,31 @@ namespace Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //cargarCliente();
+
         }
 
-        protected void btnAceptarDNI_Click(object sender, EventArgs e)
+        protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            string nroDocumento = txtDni.Text;
+            try
+            {
+                if (tbCodigo.Text != "")
+                {
+                    VoucherDB voucherDB = new VoucherDB();
+                    if (voucherDB.Validar(tbCodigo.Text))
+                    {
+                        //continuar con el canje
+                    }else
+                    {
+                        lblError.Text = "Codigo incorrecto o ya canjeado";
+                        lblError.ForeColor = System.Drawing.Color.Red;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
-            
+                throw ex;
+            }
         }
-
-        //Solo para testear que funcione bien la clase negocio del cliente
-        //
-        //public void cargarCliente()
-        //{
-        //    ClienteDB clienteDB = new ClienteDB();
-        //    List<Cliente> listC = new List<Cliente>();
-        //    listC = clienteDB.listarCliente();
-        //}
     }
 }

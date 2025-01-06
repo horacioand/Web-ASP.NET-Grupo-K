@@ -15,6 +15,7 @@ namespace Negocio
             DataBase db = new DataBase();
             try
             {
+                //valida mediante el email si ya esta registrado y lo trae
                 string consulta = "SELECT Id, Documento,Nombre,Apellido, Email, Direccion, Ciudad, Cp FROM Clientes where Email = '" + email + "'";
                 db.setQuery(consulta);
                 db.executeQuery();
@@ -44,6 +45,7 @@ namespace Negocio
         public void crearCliente(Cliente cliente)
         {
             DataBase db = new DataBase();
+            //crea un nuevo cliente
             try
             {
                 db.setQuery("INSERT INTO Clientes (Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) VALUES (@id, @documento, @nombre, @apellido, @email, @direccion, @ciudad, @cp)");
@@ -56,12 +58,10 @@ namespace Negocio
                 db.setParameter("@direccion", cliente.Direccion);
                 db.setParameter("@ciudad", cliente.Ciudad);
                 db.setParameter("@cp", cliente.Cp);
-               
                 db.executeNonQuery();
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
