@@ -9,18 +9,17 @@ namespace Negocio
 {
     public class ClienteDB
     {
-        public List<Cliente> listarCliente()
+        public Cliente traerCliente(string email)
         {
-            List<Cliente> listaClientes = new List<Cliente>();
+            Cliente cliente = new Cliente();
             DataBase db = new DataBase();
             try
             {
-                string consulta = "SELECT Id, Documento,Nombre,Apellido, Email, Direccion, Ciudad, Cp FROM Clientes";
+                string consulta = "SELECT Id, Documento,Nombre,Apellido, Email, Direccion, Ciudad, Cp FROM Clientes where Email = '" + email + "'";
                 db.setQuery(consulta);
                 db.executeQuery();
                 while (db.reader.Read())
                 {
-                    Cliente cliente = new Cliente();
                     cliente.Id = (int)db.reader["Id"];
                     cliente.Documento = (string)db.reader["Documento"];
                     cliente.Nombre = (string)db.reader["Nombre"];
@@ -29,9 +28,8 @@ namespace Negocio
                     cliente.Direccion = (string)db.reader["Direccion"];
                     cliente.Ciudad = (string)db.reader["Ciudad"];
                     cliente.Cp = (int)db.reader["Cp"];
-                    listaClientes.Add(cliente);
                 }
-                return listaClientes;
+                return cliente;
             }
             catch (Exception ex)
             {
@@ -42,8 +40,8 @@ namespace Negocio
                 db.CloseConecction();
             }
         }
-        //todavia no probe si funciona correctamente
-        public void ingresarCliente(Cliente cliente)
+
+        public void crearCliente(Cliente cliente)
         {
             DataBase db = new DataBase();
             try
