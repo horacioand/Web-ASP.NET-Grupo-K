@@ -49,7 +49,7 @@
                         <li class="nav-item"><a class="nav-link text-white" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link text-white" runat="server" href="~/Perfil">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link text-white" runat="server" href="~/Premios">Premios</a></li>
-                        <li class="nav-item ms-sm-2 rounded bg-warning"><a class="nav-link text-dark" runat="server" href="~/Voucher">Tengo un cupón!</a></li>
+                        <li class="nav-item ms-sm-auto rounded bg-warning"><a class="nav-link text-dark" runat="server" href="~/Voucher">Tengo un cupón!</a></li>
                     </ul>
                 </div>
             </div>

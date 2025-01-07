@@ -49,5 +49,11 @@ namespace Main
             tbCP.Text = cliente.Cp.ToString();
             tbCP.Enabled = false;
         }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["cliente"] = null;
+            Response.Redirect("Login.aspx");
+        }
     }
 }
