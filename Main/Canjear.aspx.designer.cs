@@ -11,7 +11,7 @@ namespace Main
 {
 
 
-    public partial class Voucher
+    public partial class Canjear
     {
 
         /// <summary>

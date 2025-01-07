@@ -8,7 +8,7 @@ using Negocio;
 using Dominio;
 namespace Main
 {
-    public partial class Voucher : System.Web.UI.Page
+    public partial class Canjear : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
