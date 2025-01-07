@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col d-flex justify-content-end">
-            <asp:Button ID="btnCerrarSesion" CssClass="btn btn-danger" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server" />
+            <asp:Button ID="btnCerrarSesion" CssClass="btn btn-danger me-sm-2" Text="Cerrar Sesion" OnClick="btnCerrarSesion_Click" runat="server" />
         </div>
     </div>
     <div class="row">

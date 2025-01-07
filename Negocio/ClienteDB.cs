@@ -49,9 +49,9 @@ namespace Negocio
             //crea un nuevo cliente
             try
             {
-                db.setQuery("INSERT INTO Clientes (Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) VALUES (@id, @documento, @nombre, @apellido, @email, @direccion, @ciudad, @cp)");
-                
-                db.setParameter("@id", cliente.Id);
+                db.setQuery("INSERT INTO Clientes (Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) VALUES (@documento, @nombre, @apellido, @email, @direccion, @ciudad, @cp)");
+                //Saco id porque se genera en db
+                //db.setParameter("@id", cliente.Id);
                 db.setParameter("@documento", cliente.Documento);
                 db.setParameter("@nombre", cliente.Nombre);
                 db.setParameter("@apellido", cliente.Apellido);

@@ -19,11 +19,18 @@ namespace Main
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            cliente.Id = -1;
-            Session.Add("cliente", cliente);
-            Response.Redirect("Perfil.aspx");
+            divRowRegistro.Visible = true;
+            divRowLogin.Visible = false;
+            divRowBtnRegistro.Visible = false;
+            divRowVolverInicio.Visible = true;
         }
-
+        protected void btnVolverIinicio_Click(object sender, EventArgs e)
+        {
+            divRowRegistro.Visible = false;
+            divRowVolverInicio.Visible = false;
+            divRowBtnRegistro.Visible = true;
+            divRowLogin.Visible = true;
+        }
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             try
@@ -49,6 +56,34 @@ namespace Main
 
                 Session.Add("error", ex.ToString());
             }
+        }
+
+        protected void btnConfirmarRegistro_Click(object sender, EventArgs e)
+        {
+            //Falta manejo de excepciones pero ya funciona la carga del cliente a la db (con los campos correctos)
+            //Falta validar campos vacios, mail y numeros
+            string documento = tbDocumentoRegistro.Text;
+            string nombre = tbNombreRegistro.Text;
+            string apellido = tbApellidoRegistro.Text;
+            string email = tbEmailRegistro.Text;
+            string direccion = tbDireccionRegistro.Text;
+            string ciudad = tbCiudadRegistro.Text;
+            int cp = Convert.ToInt32(tbCodigoPostalRegistro.Text);
+
+            //Esto lo podemos limpiar haciendo un constructor que pase todo por parametros
+            Cliente nuevoCliente = new Cliente();
+            nuevoCliente.Documento = documento;
+            nuevoCliente.Nombre = nombre;
+            nuevoCliente.Apellido = apellido;
+            nuevoCliente.Email = email;
+            nuevoCliente.Direccion = direccion;
+            nuevoCliente.Ciudad = ciudad;
+            nuevoCliente.Cp = cp;
+            ClienteDB clienteDB = new ClienteDB();
+            clienteDB.crearCliente(nuevoCliente);
+
+            //Falta que lleve con la session del cliente activa
+            Response.Redirect("Perfil.aspx");
         }
     }
 }
