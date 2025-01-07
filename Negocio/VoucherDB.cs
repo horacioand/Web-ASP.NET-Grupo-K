@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
@@ -37,6 +38,35 @@ namespace Negocio
                 throw ex;
             }
             finally
+            {
+                db.CloseConecction();
+            }
+        }
+
+        public List<Voucher> listarCanjes( int id)
+        {
+            List<Voucher> list = new List<Voucher>();
+            DataBase db = new DataBase();
+            try
+            {
+                db.setQuery("select CodigoVoucher Codigo, FechaCanje, IdArticulo Articulo from Vouchers where IdCliente = @id");
+                db.setParameter("@id", id);
+                db.executeQuery();
+                while (db.reader.Read())
+                {
+                    Voucher voucher = new Voucher();
+                    voucher.Codigo = (string)db.reader["Codigo"];
+                    voucher.FechaCanje = (DateTime)db.reader["FechaCanje"];
+                    voucher.Articulo = (int)db.reader["Articulo"];
+                    list.Add(voucher);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }finally
             {
                 db.CloseConecction();
             }

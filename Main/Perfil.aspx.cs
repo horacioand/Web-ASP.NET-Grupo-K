@@ -25,12 +25,13 @@ namespace Main
                 {
                     cliente.Id = 0;
                     Session["cliente"] = null; //en caso de que no se haga el registro se reinicia el login
-                    //aqui hacer el registro
-                    //
-                    //
+                    btnCerrarSesion.Text = "Cancelar";
                 }else
                 {
                     cargarDatos();
+                    VoucherDB voucherDB = new VoucherDB();
+                    gwCanjes.DataSource = voucherDB.listarCanjes(cliente.Id);
+                    gwCanjes.DataBind();
                 }
             }
         }
