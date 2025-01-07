@@ -21,8 +21,18 @@ namespace Main
             else
             {
                 cliente = (Cliente)Session["cliente"]; //trae el cliente de la sesion
+                if (cliente.Id == -1 )
+                {
+                    cliente.Id = 0;
+                    Session["cliente"] = null; //en caso de que no se haga el registro se reinicia el login
+                    //aqui hacer el registro
+                    //
+                    //
+                }else
+                {
+                    cargarDatos();
+                }
             }
-            cargarDatos();
         }
         public void cargarDatos()
         {

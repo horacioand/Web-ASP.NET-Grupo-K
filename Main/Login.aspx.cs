@@ -19,7 +19,9 @@ namespace Main
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            
+            cliente.Id = -1;
+            Session.Add("cliente", cliente);
+            Response.Redirect("Perfil.aspx");
         }
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
