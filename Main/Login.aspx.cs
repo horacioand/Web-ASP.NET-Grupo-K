@@ -68,7 +68,8 @@ namespace Main
             string email = tbEmailRegistro.Text;
             string direccion = tbDireccionRegistro.Text;
             string ciudad = tbCiudadRegistro.Text;
-            int cp = Convert.ToInt32(tbCodigoPostalRegistro.Text);
+            int cp = int.Parse(tbCodigoPostalRegistro.Text);
+           
 
             //Esto lo podemos limpiar haciendo un constructor que pase todo por parametros
             Cliente nuevoCliente = new Cliente();

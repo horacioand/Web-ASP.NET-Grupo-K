@@ -1,18 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="Main.Perfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
     <div class="row">
-<<<<<<< HEAD
-        <div class="col d-flex justify-content-end">
-            <asp:Button ID="btnCerrarSesion" CssClass="btn btn-danger me-sm-2" Text="Cerrar Sesion" OnClick="btnCerrarSesion_Click" runat="server" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-3">
-=======
+        <div class="col-1"></div>
+
         <div class="col-4">
->>>>>>> fc8a12f1ce3ab9f65a780bb4c6d5adbee8867851
             <div class="mb-3">
                 <asp:Label ID="lblNombre" CssClass="form-label" runat="server" Text="Nombre:"></asp:Label>
                 <asp:TextBox ID="tbNombre" CssClass="form-control" runat="server"></asp:TextBox>
@@ -41,10 +34,21 @@
                 <asp:Button ID="btnCerrarSesion" CssClass="btn btn-danger" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server" />
             </div>
         </div>
-        <div class="col-8">
+
+        <div class="col-6">
             <div class="mb-3">
-                <asp:GridView ID="gwCanjes" CssClass="table" runat="server"></asp:GridView>
+                <asp:GridView ID="gwCanjes" CssClass="table" runat="server" AutoGenerateColumns="false">
+                    <Columns>
+                        <asp:BoundField DataField="Codigo" HeaderText="Cupón" SortExpression="Codigo" Visible="true" />
+                        <asp:BoundField DataField="IdCliente" HeaderText="Cliente" SortExpression="Cliente" Visible="false" />
+                        <asp:BoundField DataField="FechaCanje" HeaderText="Fecha de Canje" SortExpression="Fecha" Visible="true" />
+                        <asp:BoundField DataField="Articulo" HeaderText="Articulo" SortExpression="Articulo" Visible="true" />
+                    </Columns>
+                </asp:GridView>
             </div>
         </div>
+
+        <div class="col-1"></div>
+
     </div>
 </asp:Content>

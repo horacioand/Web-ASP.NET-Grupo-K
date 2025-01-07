@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Canjear.aspx" />
     <Content Include="Perfil.aspx" />
     <Content Include="Premios.aspx" />
     <Content Include="Login.aspx" />
@@ -177,13 +178,19 @@
     <Content Include="Site.Master" />
     <Content Include="styles.css" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Voucher.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Canjear.aspx.cs">
+      <DependentUpon>Canjear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Canjear.aspx.designer.cs">
+      <DependentUpon>Canjear.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,12 +244,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Voucher.aspx.cs">
-      <DependentUpon>Voucher.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Voucher.aspx.designer.cs">
-      <DependentUpon>Voucher.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

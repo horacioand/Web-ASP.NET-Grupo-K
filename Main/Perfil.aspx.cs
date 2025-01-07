@@ -32,6 +32,7 @@ namespace Main
                     VoucherDB voucherDB = new VoucherDB();
                     gwCanjes.DataSource = voucherDB.listarCanjes(cliente.Id);
                     gwCanjes.DataBind();
+                    
                 }
             }
         }
