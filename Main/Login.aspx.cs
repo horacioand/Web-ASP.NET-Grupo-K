@@ -36,7 +36,9 @@ namespace Main
                         lblError.ForeColor = System.Drawing.Color.Red;
                     }else
                     {
-                        Response.Redirect("Perfil.aspx?clienteId=" + cliente.Id);
+                        //se inicia sesion redirigiendo a la pagina perfil
+                        Session.Add("cliente", cliente);
+                        Response.Redirect("Perfil.aspx");
                     }
                 }
             }

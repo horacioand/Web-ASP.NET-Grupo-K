@@ -22,8 +22,15 @@ namespace Main
                 if (tbCodigo.Text != "")
                 {
                     VoucherDB voucherDB = new VoucherDB();
+                    //valida si el voucher existe o ya ha sido canjeado
                     if (voucherDB.Validar(tbCodigo.Text))
                     {
+                        string codigo = tbCodigo.Text;
+                        Session.Add("codigo", codigo);
+                        if (Session["clienteId"] == null)
+                        {
+                            Response.Redirect("Login.aspx");
+                        }
                         //continuar con el canje
                     }else
                     {

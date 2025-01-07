@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,13 @@ namespace Main
         Cliente cliente = new Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["cliente"] == null) //redirige al login
             {
-                if (cliente.Id == 0)
-                {
-                    string id = Request.QueryString["clienteId"];
-                    if (id != null)
-                    {
-                        cliente.Id = int.Parse(Request.QueryString["clienteId"]);
-                        Session["clienteId"] = cliente.Id;
-                    }
-                    else if (Session["clienteId"] == null) 
-                    {
-                        Response.Redirect("Login.aspx");
-                    }else
-                    {
-                        cliente.Id = (int)Session["clienteId"];
-                    }
-                }
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                cliente = (Cliente)Session["cliente"]; //trae el cliente de la sesion
             }
         }
     }
