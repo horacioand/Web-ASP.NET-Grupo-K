@@ -22,6 +22,22 @@ namespace Main
             {
                 cliente = (Cliente)Session["cliente"]; //trae el cliente de la sesion
             }
+            cargarDatos();
+        }
+        public void cargarDatos()
+        {
+            tbNombre.Text = cliente.Nombre;
+            tbNombre.Enabled = false;
+            tbApellido.Text = cliente.Apellido;
+            tbApellido.Enabled = false;
+            tbEmail.Text = cliente.Email;
+            tbEmail.Enabled = false;
+            tbDireccion.Text = cliente.Direccion;
+            tbDireccion.Enabled = false;
+            tbCiudad.Text = cliente.Ciudad;
+            tbCiudad.Enabled = false;
+            tbCP.Text = cliente.Cp.ToString();
+            tbCP.Enabled = false;
         }
     }
 }

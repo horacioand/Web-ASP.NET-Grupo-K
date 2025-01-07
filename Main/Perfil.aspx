@@ -1,4 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="Main.Perfil" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="mb-3">
+        <asp:Label ID="lblNombre" CssClass="form-label" runat="server" Text="Nombre:"></asp:Label>
+        <asp:TextBox ID="tbNombre" CssClass="form-control" runat="server"></asp:TextBox>
+    </div>
+    <div class="mb-3">
+        <asp:Label ID="lblApellido" CssClass="form-label" runat="server" Text="Apellido:"></asp:Label>
+        <asp:TextBox ID="tbApellido" CssClass="form-control" runat="server"></asp:TextBox>
+    </div>
+    <div class="mb-3">
+        <asp:Label ID="lblEmail" CssClass="form-label" runat="server" Text="Email:"></asp:Label>
+        <asp:TextBox ID="tbEmail" CssClass="form-control" runat="server"></asp:TextBox>
+    </div>
+    <div class="mb-3">
+        <asp:Label ID="lblDireccion" CssClass="form-label" runat="server" Text="Direccion:"></asp:Label>
+        <asp:TextBox ID="tbDireccion" CssClass="form-control" runat="server"></asp:TextBox>
+    </div>
+    <div class="mb-3">
+        <asp:Label ID="lblCiuadad" CssClass="form-label" runat="server" Text="Ciudad:"></asp:Label>
+        <asp:TextBox ID="tbCiudad" CssClass="form-control" runat="server"></asp:TextBox>
+    </div>
+    <div class="mb-3">
+        <asp:Label ID="lblCP" CssClass="form-label" runat="server" Text="Codigo Postal:"></asp:Label>
+        <asp:TextBox ID="tbCP" CssClass="form-control" runat="server"></asp:TextBox>
+    </div>
 </asp:Content>
