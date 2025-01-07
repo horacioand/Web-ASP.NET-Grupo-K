@@ -5,43 +5,32 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Negocio;
 
 namespace Main
 {
-    public partial class Contact : Page
+    public partial class Perfil : System.Web.UI.Page
     {
         Cliente cliente = new Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnRegistrarse_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        protected void btnIniciarSesion_Click(object sender, EventArgs e)
-        {
-            try
+            if (!IsPostBack)
             {
-                if (tbEmail.Text != "")
+                if (cliente.Id == 0)
                 {
-                    ClienteDB clienteDB = new ClienteDB();
-                    cliente = clienteDB.traerCliente(tbEmail.Text);
-
+                    string id = Request.QueryString["clienteId"];
+                    if (id != null)
+                    {
+                        cliente.Id = int.Parse(Request.QueryString["clienteId"]);
+                        Session["clienteId"] = cliente.Id;
+                    }
+                    else if (Session["clienteId"] == null) 
+                    {
+                        Response.Redirect("Login.aspx");
+                    }else
+                    {
+                        cliente.Id = (int)Session["clienteId"];
+                    }
                 }
-                else
-                {
-                    lblError.Text = "Email incorrecto o no registrado";
-                    lblError.ForeColor = System.Drawing.Color.Red;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
             }
         }
     }

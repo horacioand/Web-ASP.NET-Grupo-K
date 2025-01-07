@@ -35,7 +35,7 @@ namespace Main
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("error", ex.ToString());
             }
         }
     }
