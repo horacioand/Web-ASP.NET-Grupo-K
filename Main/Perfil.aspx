@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
+<<<<<<< HEAD
         <div class="col d-flex justify-content-end">
             <asp:Button ID="btnCerrarSesion" CssClass="btn btn-danger me-sm-2" Text="Cerrar Sesion" OnClick="btnCerrarSesion_Click" runat="server" />
         </div>
@@ -9,6 +10,9 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-3">
+=======
+        <div class="col-4">
+>>>>>>> fc8a12f1ce3ab9f65a780bb4c6d5adbee8867851
             <div class="mb-3">
                 <asp:Label ID="lblNombre" CssClass="form-label" runat="server" Text="Nombre:"></asp:Label>
                 <asp:TextBox ID="tbNombre" CssClass="form-control" runat="server"></asp:TextBox>
@@ -33,19 +37,14 @@
                 <asp:Label ID="lblCP" CssClass="form-label" runat="server" Text="Codigo Postal:"></asp:Label>
                 <asp:TextBox ID="tbCP" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
-        </div>
-        <div class="col-2"></div>
-        <div class="col-3">
             <div class="mb-3">
-                <!--
-                //
-                //CUPONES
-                //
-                    -->
-                <asp:Label ID="Label1" CssClass="form-label" runat="server" Text="CUPONES:"></asp:Label>
-                <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:Button ID="btnCerrarSesion" CssClass="btn btn-danger" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server" />
             </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="mb-3">
+                <asp:GridView ID="gwCanjes" CssClass="table" runat="server"></asp:GridView>
+            </div>
+        </div>
     </div>
 </asp:Content>
