@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,5 +72,23 @@ namespace Negocio
                 db.CloseConecction();
             }
         }
+        public void canjear(Voucher voucher, int nArticulo)
+        {
+            DataBase conexion = new DataBase();
+            try
+            {
+                conexion.setQuery("UPDATE Vouchers SET IdCliente = " + voucher.Cliente + ", FechaCanje = " + voucher.FechaCanje + ", IdArticulo = " + nArticulo + " WHERE CodigoVoucher = " + voucher.Codigo + "");
+                conexion.executeNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.CloseConecction();
+            }
+        }
+        
     }
 }
