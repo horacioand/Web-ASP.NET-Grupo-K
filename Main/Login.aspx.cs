@@ -84,15 +84,23 @@ namespace Main
                     lblRegistroError.Text = "Ingrese un email valido";
                     return;
                 }
-
+                cliente.Documento = tbDocumentoRegistro.Text;
+                cliente.Email = tbEmailRegistro.Text;
+                cliente.Cp = int.Parse(tbCodigoPostalRegistro.Text);
+                cliente.Direccion = tbDireccionRegistro.Text;
+                cliente.Ciudad = tbCiudadRegistro.Text;
+                cliente.Nombre = tbNombreRegistro.Text;
+                cliente.Apellido = tbApellidoRegistro.Text;
+                clienteDB.crearCliente(cliente); // crea el cliente si todos los datos son correctos
+                cliente = clienteDB.traerCliente(tbEmailRegistro.Text); // trae al cliente creado pero ahora con el id ya asignado
+                Session.Add("cliente", cliente);
+                Response.Redirect("Perfil.aspx");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                lblRegistroError.Text = "Campos invalidos";
-                throw;
+                lblRegistroError.Text = "Uno o varios campos son invalidos";
+                Session.Add("error", ex);
             }
-            //Falta que lleve con la session del cliente activa
-            //Response.Redirect("Perfil.aspx");
         }
     }
 }
