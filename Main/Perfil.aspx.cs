@@ -21,18 +21,24 @@ namespace Main
             else
             {
                 cliente = (Cliente)Session["cliente"]; //trae el cliente de la sesion
-                if (cliente.Id == -1 )
+                if (cliente.Id == -1)
                 {
                     cliente.Id = 0;
                     Session["cliente"] = null; //en caso de que no se haga el registro se reinicia el login
                     btnCerrarSesion.Text = "Cancelar";
-                }else
+                }
+                else
                 {
                     cargarDatos();
                     VoucherDB voucherDB = new VoucherDB();
-                    gwCanjes.DataSource = voucherDB.listarCanjes(cliente.Id);
-                    gwCanjes.DataBind();
-                    
+                    List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
+                    if (list.Count != 0)
+                    {
+                        gwCanjes.DataSource = list;
+                        gwCanjes.DataBind();
+                        lblNoCanjes.Visible = false;
+                    }
+
                 }
             }
         }

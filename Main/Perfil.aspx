@@ -46,6 +46,9 @@
                     </Columns>
                 </asp:GridView>
             </div>
+            <div>   
+                <asp:Label ID="lblNoCanjes" CssClass="form-label" runat="server" Text="Aun no has canjeado ningun codigo..."></asp:Label>
+            </div>
         </div>
 
         <div class="col-1"></div>
