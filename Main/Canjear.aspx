@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm d-flex flex-column align-items-center">
-            <h6>Ingrese el codigo:</h6>
+            <asp:Label cssclass="h6" ID="lblInfo" runat="server" Text="Ingrese el codigo:"></asp:Label>
             <br />
             <asp:TextBox ID="tbCodigo" CssClass="form-control mb-2" runat="server"></asp:TextBox>
             <asp:Label ID="lblError" runat="server" cssclass="" Text=""></asp:Label>

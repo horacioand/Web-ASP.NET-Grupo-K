@@ -48,7 +48,14 @@ namespace Main
                     {
                         //se inicia sesion redirigiendo a la pagina perfil
                         Session.Add("cliente", cliente);
-                        Response.Redirect("Perfil.aspx");
+                        if (Session["codigo"] != null)
+                        {
+                            Response.Redirect("Canjear.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("Perfil.aspx");
+                        }
                     }
                 }
             }
@@ -68,7 +75,7 @@ namespace Main
                     lblRegistroError.Text = "Debe llenar todos los campos";
                     return;
                 }
-                ClienteDB clienteDB = new ClienteDB();  
+                ClienteDB clienteDB = new ClienteDB();
                 if (clienteDB.validarDatos(tbDocumentoRegistro.Text, 0))
                 {
                     lblRegistroError.Text = "Documento ya registrado";
@@ -94,7 +101,13 @@ namespace Main
                 clienteDB.crearCliente(cliente); // crea el cliente si todos los datos son correctos
                 cliente = clienteDB.traerCliente(tbEmailRegistro.Text); // trae al cliente creado pero ahora con el id ya asignado
                 Session.Add("cliente", cliente);
-                Response.Redirect("Perfil.aspx");
+                if (Session["codigo"] != null)
+                {
+                    Response.Redirect("Canjear.aspx");
+                }else
+                {
+                    Response.Redirect("Perfil.aspx");
+                }
             }
             catch (Exception ex)
             {
