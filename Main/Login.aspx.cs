@@ -39,11 +39,12 @@ namespace Main
                 {
                     ClienteDB clienteDB = new ClienteDB();
                     cliente = clienteDB.traerCliente(tbEmail.Text);
-                    if (cliente.Id == 0 )
+                    if (cliente.Id == 0)
                     {
                         lblError.Text = "Email incorrecto o no registrado";
                         lblError.ForeColor = System.Drawing.Color.Red;
-                    }else
+                    }
+                    else
                     {
                         //se inicia sesion redirigiendo a la pagina perfil
                         Session.Add("cliente", cliente);
@@ -60,31 +61,38 @@ namespace Main
 
         protected void btnConfirmarRegistro_Click(object sender, EventArgs e)
         {
-            //Falta manejo de excepciones pero ya funciona la carga del cliente a la db (con los campos correctos)
-            //Falta validar campos vacios, mail y numeros
-            string documento = tbDocumentoRegistro.Text;
-            string nombre = tbNombreRegistro.Text;
-            string apellido = tbApellidoRegistro.Text;
-            string email = tbEmailRegistro.Text;
-            string direccion = tbDireccionRegistro.Text;
-            string ciudad = tbCiudadRegistro.Text;
-            int cp = int.Parse(tbCodigoPostalRegistro.Text);
-           
+            try
+            {
+                if (string.IsNullOrEmpty(tbNombreRegistro.Text) || string.IsNullOrEmpty(tbApellidoRegistro.Text) || string.IsNullOrEmpty(tbDocumentoRegistro.Text) || string.IsNullOrEmpty(tbEmailRegistro.Text) || string.IsNullOrEmpty(tbDireccionRegistro.Text) || string.IsNullOrEmpty(tbCiudadRegistro.Text) || string.IsNullOrEmpty(tbCodigoPostalRegistro.Text))
+                {
+                    lblRegistroError.Text = "Debe llenar todos los campos";
+                    return;
+                }
+                ClienteDB clienteDB = new ClienteDB();  
+                if (clienteDB.validarDatos(tbDocumentoRegistro.Text, 0))
+                {
+                    lblRegistroError.Text = "Documento ya registrado";
+                    return;
+                }
+                if (clienteDB.validarDatos(tbEmailRegistro.Text, 1))
+                {
+                    lblRegistroError.Text = "Email ya registrado";
+                    return;
+                }
+                if (!tbEmailRegistro.Text.Contains("@") || !tbEmailRegistro.Text.Contains(".com"))
+                {
+                    lblRegistroError.Text = "Ingrese un email valido";
+                    return;
+                }
 
-            //Esto lo podemos limpiar haciendo un constructor que pase todo por parametros
-            Cliente nuevoCliente = new Cliente();
-            nuevoCliente.Documento = documento;
-            nuevoCliente.Nombre = nombre;
-            nuevoCliente.Apellido = apellido;
-            nuevoCliente.Email = email;
-            nuevoCliente.Direccion = direccion;
-            nuevoCliente.Ciudad = ciudad;
-            nuevoCliente.Cp = cp;
-            ClienteDB clienteDB = new ClienteDB();
-            clienteDB.crearCliente(nuevoCliente);
-
+            }
+            catch (Exception)
+            {
+                lblRegistroError.Text = "Campos invalidos";
+                throw;
+            }
             //Falta que lleve con la session del cliente activa
-            Response.Redirect("Perfil.aspx");
+            //Response.Redirect("Perfil.aspx");
         }
     }
 }

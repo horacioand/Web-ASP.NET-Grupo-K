@@ -39,32 +39,35 @@
             <div class="col-4"></div>
             <div class="col-4 d-flex flex-column align-items-center" runat="server" id="divRowRegistro" visible="false">
                 <div class="mb-2">
-                    <label for="tbDocumentoRegistro" class="form-label" runat="server">DNI:</label>
+                    <asp:Label ID="lblDocumento" cssclass="form-label" runat="server" Text="DNI:"></asp:Label>
                     <asp:TextBox ID="tbDocumentoRegistro" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-2">
-                    <label for="tbNombreRegistro" class="form-label" runat="server">Nombre:</label>
+                    <asp:Label ID="lblNombre" CssClass="form-label" runat="server" Text="Nombre:"></asp:Label>
                     <asp:TextBox ID="tbNombreRegistro" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-2">
-                    <label for="tbApellidoRegistro" class="form-label" runat="server">Apellido:</label>
+                    <asp:Label ID="lblApellido" cssclass="form-label" runat="server" Text="Apellido:"></asp:Label>
                     <asp:TextBox ID="tbApellidoRegistro" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-2">
-                    <label for="tbEmailRegistro" class="form-label" runat="server">Email:</label>
+                    <asp:Label ID="lblEmail" runat="server" CssClass="form-label" Text="Email:"></asp:Label>
                     <asp:TextBox ID="tbEmailRegistro" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-2">
-                    <asp:Label for="tbDireccionRegistro" class="form-label" runat="server">Direccion:</asp:Label>
+                    <asp:Label ID="lblDireccion" cssclass="form-label" runat="server" Text="Direccion:"></asp:Label>
                     <asp:TextBox ID="tbDireccionRegistro" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-2">
-                    <label for="tbCiudadRegistro" class="form-label" runat="server">Ciudad:</label>
+                    <asp:Label ID="lblCiudad" cssclass="form-label" runat="server" Text="Ciudad:"></asp:Label>
                     <asp:TextBox ID="tbCiudadRegistro" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 <div class="mb-2">
-                    <label for="tbCodigoPostalRegistro" class="form-label" runat="server">Código Postal:</label>
+                    <asp:Label ID="lblCodigoPostal" CssClass="form-label" runat="server" Text="Codigo Postal:"></asp:Label>
                     <asp:TextBox ID="tbCodigoPostalRegistro" runat="server" class="form-control"></asp:TextBox>
+                </div>
+                <div class="mb-2">   
+                    <asp:Label ID="lblRegistroError" ForeColor="Red" cssclass="form-label" runat="server" Text=""></asp:Label>
                 </div>
                 <div class="">
                     <asp:Button CssClass="btn btn-primary" ID="btnConfirmarRegistro" runat="server" text="Registrarse" OnClick="btnConfirmarRegistro_Click"/>

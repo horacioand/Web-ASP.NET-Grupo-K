@@ -70,5 +70,39 @@ namespace Negocio
                 db.CloseConecction();
             }
         }
+
+        public bool validarDatos(string validar, int aux)
+        {
+            DataBase db = new DataBase();
+            try
+            {
+                string consulta;
+                if (aux == 0)
+                {
+                    consulta = "Select Id from Clientes where Documento = '" + validar + "'";
+                }else
+                {
+                    consulta = "Select Id from Clientes where Email = '" + validar + "'";
+                }
+                db.setQuery(consulta);
+                db.executeQuery();
+                if (db.reader.Read())
+                {
+                    //regresa true si ya ha sido registrado
+                    return true;
+                }
+                // regresa false si no ha sido registrado
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                db.CloseConecction();
+            }
+        }
     }
 }
