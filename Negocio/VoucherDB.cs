@@ -72,12 +72,12 @@ namespace Negocio
                 db.CloseConecction();
             }
         }
-        public void canjear(Voucher voucher, int nArticulo)
+        public void canjear(int idCliente, int nArticulo, string codigoVoucher)
         {
             DataBase conexion = new DataBase();
             try
             {
-                conexion.setQuery("UPDATE Vouchers SET IdCliente = " + voucher.Cliente + ", FechaCanje = " + voucher.FechaCanje + ", IdArticulo = " + nArticulo + " WHERE CodigoVoucher = " + voucher.Codigo + "");
+                conexion.setQuery("UPDATE Vouchers SET IdCliente = " + idCliente + ", FechaCanje = GETDATE() , IdArticulo = " + nArticulo + " WHERE CodigoVoucher = " + codigoVoucher + "");
                 conexion.executeNonQuery();
             }
             catch (Exception)
