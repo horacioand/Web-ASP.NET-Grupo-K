@@ -1,8 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="Main.Perfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="row">
+    <div class="row" id="divCanjeExitoso" runat="server">
+        <div class="col"></div>
+        <div class="col">
+           <asp:Label ID="lblCanjeExitoso" runat="server" Text="Canje exitoso"></asp:Label>
+           <asp:Button id="btnCanjeExitoso" runat="server" Text="Continuar" />
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row divPrincipalPerfil">
         <div class="col-1"></div>
 
         <div class="col-4">
@@ -46,12 +53,11 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            <div>   
+            <div>
                 <asp:Label ID="lblNoCanjes" CssClass="form-label" runat="server" Text="Aun no has canjeado ningun codigo..."></asp:Label>
             </div>
         </div>
 
         <div class="col-1"></div>
-
     </div>
 </asp:Content>

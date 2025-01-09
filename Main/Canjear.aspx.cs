@@ -13,9 +13,17 @@ namespace Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((IsPostBack)) //si no es la primera vez que carga la pagina
+            {
+                Session["codigo"] = null;
+                Session["articulo"] = null;
+            }
             if (Session["codigo"] != null)
             {
+                rowTxtCodigo.Visible = false;
+                rowTitleCanje.Visible = true;
+                rowElegirPremio.Visible = true;
+                CargarArticulos();
                 if (Session["cliente"] == null)
                 {
                     Response.Redirect("Login.aspx");
@@ -34,16 +42,13 @@ namespace Main
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            rowElegirPremio.Visible = false;
-            rowTitleCanje.Visible = false;
-            rowTxtCodigo.Visible = false;
             try
             {
-                //if (Session["codigo"] != null)
-                //{
-                //    Session["codigo"] = null;
-                //    Response.Redirect("Canjear.aspx");
-                //}
+                if (Session["codigo"] != null)
+                {
+                    Session["codigo"] = null;
+                    Response.Redirect("Canjear.aspx");
+                }
                 if (tbCodigo.Text != "")
                 {
                     VoucherDB voucherDB = new VoucherDB();
@@ -52,7 +57,7 @@ namespace Main
                     if (voucherDB.Validar(tbCodigo.Text))
                     {
                         string codigo = tbCodigo.Text;
-                        //Session.Add("codigo", codigo);
+                        Session["codigo"] = codigo;
                         //valida si ya se inicio sesion
                         CargarArticulos();
                         rowTxtCodigo.Visible = false;
@@ -95,21 +100,26 @@ namespace Main
                 Session.Add("error", ex.ToString());
             }
         }
-        //Seleccion de artículo, todavia tengo que ver como diferenciar si el cliente ya inicio sesion o no y como pasar
-        //el voucher con el id del cliente
+
         protected void btn1_Click(object sender, EventArgs e)
         {
             Session["Articulo"] = 1;
+            Session["codigo"] = tbCodigo.Text; //lo asigno aca porque si no no me lo pasa a la siguiente pagina
+            Response.Redirect("Perfil.aspx");
         }
 
         protected void btn2_Click(object sender, EventArgs e)
         {
             Session["Articulo"] = 2;
+            Session["codigo"] = tbCodigo.Text;
+            Response.Redirect("Login.aspx");
         }
 
         protected void btn3_Click(object sender, EventArgs e)
         {
             Session["Articulo"] = 3;
+            Session["codigo"] = tbCodigo.Text;
+            Response.Redirect("Login.aspx");
         }
     }
 }

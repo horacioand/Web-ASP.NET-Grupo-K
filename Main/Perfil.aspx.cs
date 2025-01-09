@@ -14,6 +14,19 @@ namespace Main
         Cliente cliente = new Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //temporal para ver si trae el codigo
+            if (Session["codigo"] == null)
+            {
+                Response.Write("No se encontró el código en la sesión.");
+            }
+            else
+            {
+                string codigo = (string)Session["codigo"];
+                Response.Write("Código encontrado: " + codigo);
+            }
+            //
+
             if (Session["cliente"] == null) //redirige al login
             {
                 Response.Redirect("Login.aspx");
@@ -31,6 +44,20 @@ namespace Main
                 {
                     cargarDatos();
                     VoucherDB voucherDB = new VoucherDB();
+                    if (Session["codigo"] != null)
+                    {
+                        string codigo = (string)Session["codigo"];
+                        if (voucherDB.Validar(codigo))
+                        {
+                            int nroArticulo = (int)Session["Articulo"];
+                            voucherDB.canjear(cliente.Id, nroArticulo, codigo);
+                            Session["codigo"] = null;
+                        }
+                        else
+                        {
+                            Response.Redirect("Perfil.aspx");
+                        }
+                    }
                     List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
                     if (list.Count != 0)
                     {
