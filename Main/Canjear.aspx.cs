@@ -112,14 +112,14 @@ namespace Main
         {
             Session["Articulo"] = 2;
             Session["codigo"] = tbCodigo.Text;
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Perfil.aspx");
         }
 
         protected void btn3_Click(object sender, EventArgs e)
         {
             Session["Articulo"] = 3;
             Session["codigo"] = tbCodigo.Text;
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Perfil.aspx");
         }
     }
 }

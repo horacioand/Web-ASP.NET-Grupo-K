@@ -77,7 +77,7 @@ namespace Negocio
             DataBase conexion = new DataBase();
             try
             {
-                conexion.setQuery("UPDATE Vouchers SET IdCliente = " + idCliente + ", FechaCanje = GETDATE() , IdArticulo = " + nArticulo + " WHERE CodigoVoucher = " + codigoVoucher + "");
+                conexion.setQuery("UPDATE Vouchers SET IdCliente = " + idCliente + ", FechaCanje = GETDATE() , IdArticulo = " + nArticulo + " WHERE CodigoVoucher = '" + codigoVoucher + "'");
                 conexion.executeNonQuery();
             }
             catch (Exception)
