@@ -42,30 +42,34 @@ namespace Main
                 }
                 else
                 {
-                    cargarDatos();
-                    VoucherDB voucherDB = new VoucherDB();
-                    if (Session["codigo"] != null)
+                    if (Session["cliente"] != null && Session["codigo"] != null && Session["articulo"] != null)
                     {
-                        string codigo = (string)Session["codigo"];
-                        if (voucherDB.Validar(codigo))
+                        Response.Redirect("Canjear.aspx");
+                    }
+                    else
+                    {
+                        cargarDatos();
+                        VoucherDB voucherDB = new VoucherDB();
+                        if (Session["codigo"] != null)
                         {
-                            int nroArticulo = (int)Session["Articulo"];
-                            voucherDB.canjear(cliente.Id, nroArticulo, codigo);
-                            Session["codigo"] = null;
+                            string codigo = (string)Session["codigo"];
+                            if (voucherDB.Validar(codigo))
+                            {
+                                Session["codigo"] = codigo;
+                            }
+                            else
+                            {
+                                Response.Redirect("Perfil.aspx");
+                            }
                         }
-                        else
+                        List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
+                        if (list.Count != 0)
                         {
-                            Response.Redirect("Perfil.aspx");
+                            gwCanjes.DataSource = list;
+                            gwCanjes.DataBind();
+                            lblNoCanjes.Visible = false;
                         }
                     }
-                    List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
-                    if (list.Count != 0)
-                    {
-                        gwCanjes.DataSource = list;
-                        gwCanjes.DataBind();
-                        lblNoCanjes.Visible = false;
-                    }
-
                 }
             }
         }

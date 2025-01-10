@@ -14,8 +14,15 @@ namespace Main
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarArticulos();
+            if (Session["codigo"] != null)
+            {
+                btn1.Visible = true;
+                btn2.Visible = true;
+                btn3.Visible = true;
+                rowDivCancelar.Visible = true;
+            }
         }
-
+        
         public void CargarArticulos()
         {
             ArticuloDB db = new ArticuloDB();
@@ -38,6 +45,33 @@ namespace Main
 
                 Session.Add("error", ex.ToString());
             }
+        }
+
+        protected void btn1_Click(object sender, EventArgs e)
+        {
+            Session["articulo"] = 1;
+            Session["articuloNombre"] = articulo1.Text;
+            Response.Redirect("Perfil.aspx");
+        }
+
+        protected void btn2_Click(object sender, EventArgs e)
+        {
+            Session["articulo"] = 2;
+            Session["articuloNombre"] = articulo2.Text;
+            Response.Redirect("Perfil.aspx");
+        }
+
+        protected void btn3_Click(object sender, EventArgs e)
+        {
+            Session["articulo"] = 3;
+            Session["articuloNombre"] = articulo3.Text;
+            Response.Redirect("Perfil.aspx");
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Session["codigo"] = null;
+            Response.Redirect("Canjear.aspx");
         }
     }
 }

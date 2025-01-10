@@ -15,33 +15,6 @@ namespace Main
     {
 
         /// <summary>
-        /// divCanjeExitoso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCanjeExitoso;
-
-        /// <summary>
-        /// lblCanjeExitoso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCanjeExitoso;
-
-        /// <summary>
-        /// btnCanjeExitoso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCanjeExitoso;
-
-        /// <summary>
         /// lblNombre control.
         /// </summary>
         /// <remarks>

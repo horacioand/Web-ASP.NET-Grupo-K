@@ -13,22 +13,47 @@ namespace Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((IsPostBack)) //si no es la primera vez que carga la pagina
+            //
+            //
+            //temporal para ver si trae session
+            if (Session["cliente"] == null)
             {
-                Session["codigo"] = null;
-                Session["articulo"] = null;
+                Response.Write("No se encontró el cliente en la sesión.");
             }
+            else
+            {
+                Cliente cliente = (Cliente)Session["cliente"];
+                Response.Write("cliente encontrado: " + cliente.Id);
+            }
+            //
+            //temporal para ver si trae session
+            if (Session["codigo"] == null)
+            {
+                Response.Write("No se encontró el código en la sesión.");
+            }
+            else
+            {
+                string codigo = (string)Session["codigo"];
+                Response.Write("Código encontrado: " + codigo);
+            }
+            //
+            //temporal para ver si trae session
+            if (Session["articulo"] == null)
+            {
+                Response.Write("No se encontró el articulo en la sesión.");
+            }
+            else
+            {
+                int articulo = (int)Session["articulo"];
+                Response.Write("Código encontrado: " + articulo);
+            }
+            //
+            //
+            //
+
             if (Session["codigo"] != null)
             {
-                rowTxtCodigo.Visible = false;
-                rowTitleCanje.Visible = true;
-                rowElegirPremio.Visible = true;
-                CargarArticulos();
-                if (Session["cliente"] == null)
-                {
-                    Response.Redirect("Login.aspx");
-                }
-                else
+                if (Session["articulo"] == null)
                 {
                     tbCodigo.Enabled = false;
                     tbCodigo.Text = (string)Session["codigo"];
@@ -36,10 +61,40 @@ namespace Main
                     btnAceptar.Text = "Cancelar";
                     btnAceptar.BackColor = System.Drawing.Color.Red;
                     btnAceptar.BorderColor = System.Drawing.Color.Red;
+                    Response.Redirect("Premios.aspx");
+                }
+                else
+                {
+                    if (Session["cliente"] == null)
+                    {
+                        Response.Redirect("Cliente.aspx");
+                    }
+                    else
+                    {
+                        rowDivCanjear.Visible = true;
+                        artSeleccionado.Text = "Articulo seleccionado: " + Session["articuloNombre"];
+                        rowDivCodigo.Visible = false;
+                    }
                 }
             }
         }
-
+        public void canjearArticulo()
+        {
+            VoucherDB voucherDB = new VoucherDB();
+            Cliente cliente = (Cliente)Session["cliente"];
+            int articulo = (int)Session["articulo"];
+            string codigo = (string)Session["codigo"];
+            voucherDB.canjear(cliente.Id, articulo, codigo);
+        }
+        protected void btnContinuar_Click(object sender, EventArgs e)
+        {
+            canjearArticulo();
+            Session["articulo"] = null;
+            Session["codigo"] = null;
+            rowDivCanjear.Visible = false;
+            rowDivCodigo.Visible = false;
+            divCanjeExitoso.Visible = true;
+        }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -59,15 +114,12 @@ namespace Main
                         string codigo = tbCodigo.Text;
                         Session["codigo"] = codigo;
                         //valida si ya se inicio sesion
-                        CargarArticulos();
-                        rowTxtCodigo.Visible = false;
-                        rowTitleCanje.Visible = true;
-                        rowElegirPremio.Visible = true;
+
                     }
                     else
                     {
                         lblError.Text = "Codigo incorrecto o ya canjeado";
-                        rowTxtCodigo.Visible = true;
+                        rowDivCodigo.Visible = true;
                     }
                 }
             }
@@ -77,49 +129,45 @@ namespace Main
                 Session.Add("error", ex.ToString());
             }
         }
-        public void CargarArticulos()
-        {
-            ArticuloDB db = new ArticuloDB();
-            List<Articulo> listA = new List<Articulo>();
-            try
-            {
-                listA = db.ListarArticulos();
-                articulo1.Text = listA[0].Nombre;
-                img1.ImageUrl = listA[0].listImagenes[0];
-                descripcion1.Text = listA[0].Descripcion;
-                articulo2.Text = listA[1].Nombre;
-                img2.ImageUrl = listA[1].listImagenes[0];
-                descripcion2.Text = listA[1].Descripcion;
-                articulo3.Text = listA[2].Nombre;
-                img3.ImageUrl = listA[2].listImagenes[0];
-                descripcion3.Text = listA[2].Descripcion;
-            }
-            catch (Exception ex)
-            {
 
-                Session.Add("error", ex.ToString());
-            }
-        }
 
         protected void btn1_Click(object sender, EventArgs e)
         {
-            Session["Articulo"] = 1;
-            Session["codigo"] = tbCodigo.Text; //lo asigno aca porque si no no me lo pasa a la siguiente pagina
-            Response.Redirect("Perfil.aspx");
+            Session["articulo"] = 1;
+            Session["codigo"] = tbCodigo.Text;
+            Response.Redirect("Premios.aspx");
         }
 
         protected void btn2_Click(object sender, EventArgs e)
         {
-            Session["Articulo"] = 2;
+            Session["articulo"] = 2;
             Session["codigo"] = tbCodigo.Text;
-            Response.Redirect("Perfil.aspx");
+            Response.Redirect("Premios.aspx");
         }
 
         protected void btn3_Click(object sender, EventArgs e)
         {
-            Session["Articulo"] = 3;
+            Session["articulo"] = 3;
             Session["codigo"] = tbCodigo.Text;
+            Response.Redirect("Premios.aspx");
+        }
+
+        protected void btnPerfil_Click(object sender, EventArgs e)
+        {
             Response.Redirect("Perfil.aspx");
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Session["codigo"] = null;
+            Session["articulo"] = null;
+            Response.Redirect("Canjear.aspx");
+        }
+
+        protected void btnCambiarArticulo_Click(object sender, EventArgs e)
+        {
+            Session["articulo"] = null;
+            Response.Redirect("Premios.aspx");
         }
     }
 }

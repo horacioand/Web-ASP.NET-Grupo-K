@@ -3,7 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 style="justify-self: center" id="title"><%: Title %></h3>
     <hr />
-    <div class="row" id="rowTxtCodigo" runat="server">
+
+    <div class="row" id="rowDivCanjear" visible="false" runat="server">
+        <div class="col-sm"></div>
+        <div class="col-sm d-flex flex-column align-items-center">
+            <asp:Label CssClass="h5" ID="artSeleccionado" runat="server" Text=""></asp:Label>
+            <asp:Button ID="btnCambiarArticulo" OnClick="btnCambiarArticulo_Click" runat="server" Text="Cambiar" CssClass="btn btn-primary mb-2" />
+            <asp:Label CssClass="h5" ID="lblExito" runat="server" Text="Confirmar canje?"></asp:Label>
+            <asp:Button ID="btnContinuar" OnClick="btnContinuar_Click" runat="server" Text="Confirmar" CssClass="btn btn-primary mb-2" />
+            <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" runat="server" Text="Cancelar" CssClass="btn btn-danger" />
+        </div>
+        <div class="col-sm"></div>
+    </div>
+    <div class="row" id="rowDivCodigo" runat="server">
         <div class="col-sm"></div>
         <div class="col-sm d-flex flex-column align-items-center">
             <asp:Label CssClass="h6" ID="lblInfo" runat="server" Text="Ingrese el codigo:"></asp:Label>
@@ -15,28 +27,13 @@
         <div class="col-sm"></div>
     </div>
 
-    <!--Seccion oculta elegir premio-->
-    <div class="row" id="rowTitleCanje" visible="false" runat="server">
-        <div class="d-flex justify-content-center"><label class="h2">Elija su premio:</label></div>
-    </div>
-    <div class="row" id="rowElegirPremio" visible="false" runat="server">
-        <div id="Premio1" class="col-md-4 articulo d-flex flex-column align-items-center" aria-labelledby="">
-            <asp:Label ID="articulo1" CssClass="h5" runat="server" Text=""></asp:Label>
-            <asp:Image ID="img1" runat="server" />
-            <asp:Label ID="descripcion1" runat="server" Text=""></asp:Label>
-            <asp:Button ID="btn1" CssClass="btn btn-primary" runat="server" Text="Elegir" OnClick="btn1_Click" />
+    <!--Seccion oculta canje exitoso premio-->
+    <div class="row" id="divCanjeExitoso" visible="false" runat="server">
+        <div class="col-sm"></div>
+        <div class="col-sm d-flex flex-column align-items-center">
+            <asp:Label CssClass="h2" ID="lblCanjeExitoso" runat="server" Text="Artículo canjeado exitosamente!"></asp:Label>
+            <asp:Button ID="btnPerfil" OnClick="btnPerfil_Click" runat="server" Text="Continuar" CssClass="btn btn-primary" />
         </div>
-        <div id="Premio2" class="col-md-4 articulo d-flex flex-column align-items-center" aria-labelledby="">
-            <asp:Label ID="articulo2" CssClass="h5" runat="server" Text=""></asp:Label>
-            <asp:Image ID="img2" runat="server" />
-            <asp:Label ID="descripcion2" runat="server" Text=""></asp:Label>
-            <asp:Button ID="btn2" CssClass="btn btn-primary" runat="server" Text="Elegir" OnClick="btn2_Click" />
-        </div>
-        <div id="Premio3" class="col-md-4 articulo d-flex flex-column align-items-center" aria-labelledby="">
-            <asp:Label ID="articulo3" CssClass="h5" runat="server" Text=""></asp:Label>
-            <asp:Image ID="img3" runat="server" />
-            <asp:Label ID="descripcion3" runat="server" Text=""></asp:Label>
-            <asp:Button ID="btn3" CssClass="btn btn-primary" runat="server" Text="Elegir" OnClick="btn3_Click" />
-        </div>
+        <div class="col-sm"></div>
     </div>
 </asp:Content>
