@@ -31,13 +31,19 @@ namespace Main
             {
                 listA = db.ListarArticulos();
                 articulo1.Text = listA[0].Nombre;
-                img1.ImageUrl = listA[0].listImagenes[0];
+                art1img1.ImageUrl = listA[0].listImagenes[0];
+                art1img2.ImageUrl = listA[0].listImagenes[1];
+                art1img3.ImageUrl = listA[0].listImagenes[2];
                 descripcion1.Text = listA[0].Descripcion;
                 articulo2.Text = listA[1].Nombre;
-                img2.ImageUrl = listA[1].listImagenes[0];
+                art2img1.ImageUrl = listA[1].listImagenes[0];
+                art2img2.ImageUrl = listA[1].listImagenes[1];
+                art2img3.ImageUrl = listA[1].listImagenes[2];
                 descripcion2.Text = listA[1].Descripcion;
                 articulo3.Text = listA[2].Nombre;
-                img3.ImageUrl = listA[2].listImagenes[0];
+                art3img1.ImageUrl = listA[2].listImagenes[0];
+                art3img2.ImageUrl = listA[2].listImagenes[1];
+                art3img3.ImageUrl = listA[2].listImagenes[2];
                 descripcion3.Text = listA[2].Descripcion;
             }
             catch (Exception ex)
@@ -70,6 +76,6 @@ namespace Main
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Canjear.aspx");
-        }
+        }   
     }
 }
