@@ -14,19 +14,6 @@ namespace Main
         Cliente cliente = new Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //temporal para ver si trae el codigo
-            if (Session["codigo"] == null)
-            {
-                Response.Write("No se encontró el código en la sesión.");
-            }
-            else
-            {
-                string codigo = (string)Session["codigo"];
-                Response.Write("Código encontrado: " + codigo);
-            }
-            //
-
             if (Session["cliente"] == null) //redirige al login
             {
                 Response.Redirect("Login.aspx");
@@ -34,47 +21,28 @@ namespace Main
             else
             {
                 cliente = (Cliente)Session["cliente"]; //trae el cliente de la sesion
-                if (cliente.Id == -1)
+                if (Session["cliente"] != null && Session["codigo"] != null && Session["articulo"] != null)
                 {
-                    cliente.Id = 0;
-                    Session["cliente"] = null; //en caso de que no se haga el registro se reinicia el login
-                    btnCerrarSesion.Text = "Cancelar";
+                    Response.Redirect("Canjear.aspx"); //valida si viene desde la pagina canje
                 }
                 else
                 {
-                    if (Session["cliente"] != null && Session["codigo"] != null && Session["articulo"] != null)
+                    cargarDatos();
+                    VoucherDB voucherDB = new VoucherDB();
+                    List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
+                    if (list.Count != 0)
                     {
-                        Response.Redirect("Canjear.aspx");
-                    }
-                    else
-                    {
-                        cargarDatos();
-                        VoucherDB voucherDB = new VoucherDB();
-                        if (Session["codigo"] != null)
-                        {
-                            string codigo = (string)Session["codigo"];
-                            if (voucherDB.Validar(codigo))
-                            {
-                                Session["codigo"] = codigo;
-                            }
-                            else
-                            {
-                                Response.Redirect("Perfil.aspx");
-                            }
-                        }
-                        List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
-                        if (list.Count != 0)
-                        {
-                            gwCanjes.DataSource = list;
-                            gwCanjes.DataBind();
-                            lblNoCanjes.Visible = false;
-                        }
+                        //valida si hay canjes y llena la tabla de lo contrario no la muestra
+                        gwCanjes.DataSource = list;
+                        gwCanjes.DataBind();
+                        lblNoCanjes.Visible = false;
                     }
                 }
             }
         }
         public void cargarDatos()
         {
+            //Llena los campos con los datos del usuario
             tbNombre.Text = cliente.Nombre;
             tbNombre.Enabled = false;
             tbApellido.Text = cliente.Apellido;
@@ -88,7 +56,6 @@ namespace Main
             tbCP.Text = cliente.Cp.ToString();
             tbCP.Enabled = false;
         }
-
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session["cliente"] = null;

@@ -7,7 +7,7 @@
         <div class="row" id="rowDivCancelar" visible="false" runat="server">
             <div class="col-sm"></div>
             <div class="col-sm d-flex flex-column align-items-center">
-                <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" runat="server" Text="Cancelar" CssClass="btn btn-danger mb-2" />
+                <asp:Button ID="btnVolver" OnClick="btnVolver_Click" CssClass="btn btn-primary"  runat="server" Text="Volver" />
             </div>
             <div class="col-sm"></div>
         </div>

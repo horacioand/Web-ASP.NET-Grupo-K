@@ -51,26 +51,24 @@ namespace Main
         {
             Session["articulo"] = 1;
             Session["articuloNombre"] = articulo1.Text;
-            Response.Redirect("Perfil.aspx");
+            Response.Redirect("Canjear.aspx");
         }
 
         protected void btn2_Click(object sender, EventArgs e)
         {
             Session["articulo"] = 2;
             Session["articuloNombre"] = articulo2.Text;
-            Response.Redirect("Perfil.aspx");
+            Response.Redirect("Canjear.aspx");
         }
 
         protected void btn3_Click(object sender, EventArgs e)
         {
             Session["articulo"] = 3;
             Session["articuloNombre"] = articulo3.Text;
-            Response.Redirect("Perfil.aspx");
+            Response.Redirect("Canjear.aspx");
         }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
+        protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Session["codigo"] = null;
             Response.Redirect("Canjear.aspx");
         }
     }

@@ -12,7 +12,7 @@ namespace Negocio
 {
     public class VoucherDB
     {
-        //Si es valido regresa true si no es valido o ya fue usado regresa false//
+        //Si es valido regresa true si no es valido o ya fue usado regresa false
         public bool Validar(string voucher)
         {
             DataBase db = new DataBase();
