@@ -11,9 +11,11 @@
             <asp:Label ID="lblError" runat="server" CssClass="" Text=""></asp:Label>
             <asp:Label CssClass="h5" ID="lblConfirmar" Visible="false" runat="server" Text="Confirmar canje?"></asp:Label>
             <asp:Label CssClass="h5" ID="lblArticulo" runat="server" Text=""></asp:Label>
-            <asp:Button ID="btnPremio" OnClick="btnPremio_Click" Visible="false" CssClass="btn btn-primary" runat="server" Text="Elegir premio" />
-            <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" Text="Aceptar" CssClass="btn btn-primary" />
-            <asp:Button ID="btnCanjear" OnClick="btnCanjear_Click" Visible="false" runat="server" Text="Canjear" CssClass="btn btn-primary" />
+            <asp:Button ID="btnPremio" OnClick="btnPremio_Click" Visible="false" CssClass="btn btn-primary mb-2" runat="server" Text="Elegir premio" />
+            <div class="div-confirmar d-flex">
+                <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" Text="Aceptar" CssClass="btn btn-primary m-1" />
+                <asp:Button ID="btnCanjear" OnClick="btnCanjear_Click" Visible="false" runat="server" Text="Canjear" CssClass="btn btn-primary m-1" />
+            </div>
         </div>
         <div class="col-sm"></div>
     </div>
