@@ -21,22 +21,15 @@ namespace Main
             else
             {
                 cliente = (Cliente)Session["cliente"]; //trae el cliente de la sesion
-                if (Session["cliente"] != null && Session["codigo"] != null && Session["articulo"] != null)
+                cargarDatos();
+                VoucherDB voucherDB = new VoucherDB();
+                List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
+                if (list.Count != 0)
                 {
-                    Response.Redirect("Canjear.aspx"); //valida si viene desde la pagina canje
-                }
-                else
-                {
-                    cargarDatos();
-                    VoucherDB voucherDB = new VoucherDB();
-                    List<Voucher> list = voucherDB.listarCanjes(cliente.Id);
-                    if (list.Count != 0)
-                    {
-                        //valida si hay canjes y llena la tabla de lo contrario no la muestra
-                        gwCanjes.DataSource = list;
-                        gwCanjes.DataBind();
-                        lblNoCanjes.Visible = false;
-                    }
+                    //valida si hay canjes y llena la tabla de lo contrario no la muestra
+                    gwCanjes.DataSource = list;
+                    gwCanjes.DataBind();
+                    lblNoCanjes.Visible = false;
                 }
             }
         }
