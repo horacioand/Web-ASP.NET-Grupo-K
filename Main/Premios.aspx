@@ -12,7 +12,7 @@
             <div class="col-sm"></div>
         </div>
         <div class="row">
-            <div id="Premio1" class="col-md-4 articulo" aria-labelledby="">
+            <div id="Premio1" class="articulo card" aria-labelledby="">
                 <asp:Label ID="articulo1" CssClass="h4" runat="server" Text=""></asp:Label>
                 <div class="carrusel">
                     <div class="slides">
@@ -21,10 +21,12 @@
                         <asp:Image alt="Imagen 3" ID="art1img3" runat="server"></asp:Image>
                     </div>
                 </div>
-                <asp:Label ID="descripcion1" runat="server" Text=""></asp:Label>
+                <asp:Label ID="descripcion1" cssclass="form-label" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblMarca1" cssclass="form-label" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblPrecio1" cssclass="form-label" runat="server" Text="Precio: "></asp:Label>
                 <asp:Button ID="btn1" CssClass="btn btn-primary" Visible="false" runat="server" Text="Elegir" OnClick="btn1_Click" />
             </div>
-            <div id="Premio2" class="col-md-4 articulo" aria-labelledby="">
+            <div id="Premio2" class="articulo card" aria-labelledby="">
                 <asp:Label ID="articulo2" CssClass="h4" runat="server" Text=""></asp:Label>
                 <div class="carrusel">
                     <div class="slides">
@@ -33,10 +35,12 @@
                         <asp:Image alt="Imagen 3" ID="art2img3" runat="server"></asp:Image>
                     </div>
                 </div>
-                <asp:Label ID="descripcion2" runat="server" Text=""></asp:Label>
+                <asp:Label ID="descripcion2" cssclass="form-label" runat="server" Text=""></asp:Label>    
+                <asp:Label ID="lblMarca2" cssclass="form-label" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblPrecio2" cssclass="form-label" runat="server" Text="Precio: "></asp:Label>
                 <asp:Button ID="btn2" CssClass="btn btn-primary" Visible="false" runat="server" Text="Elegir" OnClick="btn2_Click" />
             </div>
-            <div id="Premio3" class="col-md-4 articulo" aria-labelledby="">
+            <div id="Premio3" class="articulo card" aria-labelledby="">
                 <asp:Label ID="articulo3" CssClass="h4" runat="server" Text=""></asp:Label>
                 <div class="carrusel">
                     <div class="slides">
@@ -45,8 +49,9 @@
                         <asp:Image alt="Imagen 3" ID="art3img3" runat="server"></asp:Image>
                     </div>
                 </div>
-
-                <asp:Label ID="descripcion3" runat="server" Text=""></asp:Label>
+                <asp:Label ID="descripcion3" cssclass="form-label" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblMarca3" cssclass="form-label" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblPrecio3" cssclass="form-label" runat="server" Text="Precio: "></asp:Label>
                 <asp:Button ID="btn3" CssClass="btn btn-primary" Visible="false" runat="server" Text="Elegir" OnClick="btn3_Click" />
             </div>
         </div>
