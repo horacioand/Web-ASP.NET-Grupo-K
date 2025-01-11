@@ -98,9 +98,18 @@ namespace Main
                 cliente.Ciudad = tbCiudadRegistro.Text;
                 cliente.Nombre = tbNombreRegistro.Text;
                 cliente.Apellido = tbApellidoRegistro.Text;
+
+                EmailService emailService = new EmailService();
+                string destinatario = tbEmailRegistro.Text;
+                string asunto = "Registro exitoso";
+                string cuerpo = "Bienvenido a la pagina de web asp, su registro ha sido exitoso";
+                emailService.armarCorreo(destinatario,asunto,cuerpo);
+                emailService.enviarCorreo();
+
                 clienteDB.crearCliente(cliente); // crea el cliente si todos los datos son correctos
                 cliente = clienteDB.traerCliente(tbEmailRegistro.Text); // trae al cliente creado pero ahora con el id ya asignado
                 Session.Add("cliente", cliente);
+
                 if (Session["codigo"] != null)
                 {
                     Response.Redirect("Canjear.aspx");

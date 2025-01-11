@@ -44,6 +44,7 @@
     <Compile Include="ArticuloDB.cs" />
     <Compile Include="ClienteDB.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VoucherDB.cs" />
   </ItemGroup>

@@ -112,11 +112,21 @@ namespace Main
             if (Session["cliente"] != null)
             {
                 canjearArticulo();
+                string articulo = Session["articuloNombre"].ToString();
                 Session["articulo"] = null;
                 Session["codigo"] = null;
                 rowDivCodigo.Visible = false;
                 divCanjeExitoso.Visible = true;
-            }else
+
+                EmailService emailService = new EmailService();
+                string asunto = "Canje exitoso";
+                string destinatario = ((Cliente)Session["cliente"]).Email;
+                string cuerpo = "Su canje en la web por el articulo "+ articulo +" ha sido exitoso";
+                emailService.armarCorreo(destinatario,asunto,cuerpo);
+                emailService.enviarCorreo();
+
+            }
+            else
             {
                 Response.Redirect("Login.aspx");
             }
